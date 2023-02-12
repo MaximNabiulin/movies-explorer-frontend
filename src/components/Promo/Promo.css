@@ -1,0 +1,121 @@
+.section__content_promo {
+  width: calc(100% - 2*40px);
+  margin: 20px auto 0;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.promo__title {
+  max-width: 730px;
+  margin: 160px auto 0;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.promo__navigation {
+  margin: 151px auto 30px;
+}
+
+.promo__links {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.promo__link-wrapper {
+  margin-right: 10px;
+  width: 96px;
+  display: flex;
+}
+
+.promo__link-wrapper:last-child {
+  margin-right: 0;
+}
+
+.promo__link {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #E8E8E8;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+  text-decoration: none;
+  transition: opacity 0.1s;
+}
+
+.promo__link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .section__content_promo {
+    width: calc(100% - 2*20px);
+  }
+
+  .promo__title {
+    max-width: 680px;
+    margin: 350px auto 0;
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  .promo__navigation {
+    margin: 314px auto 30px;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  .section__content_promo {
+    width: calc(100% - 2*20px);
+    margin: 14px auto 0;
+  }
+
+  .promo__title {
+    width: calc(100% - 2*24px);
+    margin: 220px auto 0;
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  .promo__navigation {
+    margin: 214px auto 17px;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .section__content_promo {
+    width: calc(100% - 2*14px);
+    margin: 14px auto 0;
+  }
+
+  .promo__title {
+    width: 100%;
+    margin: 220px auto 0;
+    font-size: 29px;
+    line-height: 37px;
+  }
+
+  .promo__navigation {
+    margin: 214px auto 17px;
+  }
+
+  .promo__link-wrapper {
+    margin-right: 6px;
+    width: 82px;
+  }
+
+  .promo__link {
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: 10px;
+  }
+}
