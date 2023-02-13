@@ -4,16 +4,16 @@
   display: flex;
 }
 
-.description__conainer {
+.about-project__conainer {
   width: 50%;
   padding-right: 40px;
 }
 
-.description__conainer:last-child {
+.about-project__conainer:last-child {
   padding-right: 0;
 }
 
-.description__title {
+.about-project__title {
   margin: 0;
   font-weight: 400;
   font-size: 20px;
@@ -22,7 +22,7 @@
   color: #000000;
 }
 
-.description__text {
+.about-project__text {
   margin: 26px 0 0;
   font-weight: 400;
   font-size: 14px;
@@ -30,13 +30,13 @@
   color: #000000;
 }
 
-.about-project__timeline {
+.timeline {
   width: calc(100% - 2*70px);
   margin: 110px auto;
   display: flex;
 }
 
-.timeline_backend {
+.timeline__backend {
   width: 20%;
 }
 
@@ -78,17 +78,17 @@
     width: calc(100% - 2*50px);
   }
 
-  .description__conainer {
+  .about-project__conainer {
     padding-right: 30px;
   }
 
-  .description__text {
+  .about-project__text {
     margin: 22px 0 0;
     font-size: 12px;
     line-height: 18px;
   }
 
-  .about-project__timeline {
+  .timeline {
     width: calc(100% - 2*50px);
     margin: 93px auto 90px;
   }
@@ -99,17 +99,17 @@
     width: calc(100% - 2*30px);
   }
 
-  .description__conainer {
+  .about-project__conainer {
     padding-right: 30px;
   }
 
-  .description__text {
+  .about-project__text {
     margin: 22px 0 0;
     font-size: 12px;
     line-height: 18px;
   }
 
-  .about-project__timeline {
+  .timeline {
     width: calc(100% - 2*30px);
     margin: 60px auto 70px;
   }
@@ -121,27 +121,27 @@
     flex-direction: column;
   }
 
-  .description__conainer {
+  .about-project__conainer {
     width: 100%;
     padding: 0;
     margin-bottom: 56px;
   }
 
-  .description__conainer:last-child {
+  .about-project__conainer:last-child {
     margin-bottom: 0;
   }
 
-  .description__title {
+  .about-project__title {
     font-size: 18px;
     line-height: 22px;
   }
-  .description__text {
+  .about-project__text {
     margin: 16px 0 0;
     font-size: 11px;
     line-height: 16px;
   }
 
-  .about-project__timeline {
+  .timeline {
     width: calc(100% - 2*18px);
     margin: 60px auto 70px;
   }

@@ -7,7 +7,7 @@ function MoviesCardList(props) {
   const { cards } = props;
 
   return (
-    <section className="movies">
+    <ul className="movies-cards">
       {cards.map((card) => {
         return (
           <MoviesCard
@@ -17,7 +17,7 @@ function MoviesCardList(props) {
             />
         );
       })}
-    </section>
+    </ul>
   )
 }
 

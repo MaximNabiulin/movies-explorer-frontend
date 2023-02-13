@@ -1,4 +1,4 @@
-.auth__page {
+.auth-page {
   width: 100%;
   max-width: 396px;
   margin: auto;
@@ -35,7 +35,7 @@
   flex-direction: column;
 }
 
-.input__wrapper {
+.auth__input-wrapper {
   display: flex;
   flex-direction: column;
 

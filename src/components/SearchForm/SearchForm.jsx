@@ -6,9 +6,9 @@ import './SearchForm.css';
 function SearchForm(props) {
   const { name } = props;
   return (
-      <section className="section__content">
-        <form name={`${name}-form`} className="movies__form">
-          <div className="movies__input-container">
+      <div className="section">
+        <form name={`${name}-form`} className="movies-form">
+          <div className="movies-form__input-container">
             <input
               type="text"
               id="movies-search"
@@ -19,13 +19,13 @@ function SearchForm(props) {
               // minLength="2"
               // maxLength="40"
               required
-              className="movies__input"
+              className="movies-form__input"
             />
 
             <button
               id = {`${name}-submit`}
               type="submit"
-              className="movies__submit-button"
+              className="movies-form__submit-button"
               >
               Поиск
             </button>
@@ -33,7 +33,7 @@ function SearchForm(props) {
 
           <FilterCheckbox/>
         </form>
-      </section>
+      </div>
   );
 }
 

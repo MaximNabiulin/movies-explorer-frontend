@@ -15,7 +15,7 @@ function MoviesCard(props) {
   }
 
   return (
-    <div className="card__frame">
+    <li className="card">
       <img
       src={card.image}
       alt={card.nameRU}
@@ -32,7 +32,7 @@ function MoviesCard(props) {
         >
         </button>
       </div>
-    </div>
+    </li>
   )
 }
 

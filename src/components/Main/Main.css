@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.section__content {
+.section {
   width: 100%;
   max-width: 1280px;
   display: flex;

@@ -1,4 +1,4 @@
-.section__content_promo {
+.promo {
   width: calc(100% - 2*40px);
   margin: 20px auto 0;
   background-color: #F5F5F5;
@@ -57,7 +57,7 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  .section__content_promo {
+  .promo {
     width: calc(100% - 2*20px);
   }
 
@@ -74,7 +74,7 @@
 }
 
 @media screen and (min-width: 500px) and (max-width: 767px) {
-  .section__content_promo {
+  .promo {
     width: calc(100% - 2*20px);
     margin: 14px auto 0;
   }
@@ -92,7 +92,7 @@
 }
 
 @media screen and (max-width: 499px) {
-  .section__content_promo {
+  .promo {
     width: calc(100% - 2*14px);
     margin: 14px auto 0;
   }

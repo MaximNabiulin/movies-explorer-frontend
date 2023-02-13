@@ -26,7 +26,7 @@ function SignForm(props) {
       >
         <div className="auth__inputs">
           {children}
-          <div className="input__wrapper">
+          <div className="auth__input-wrapper">
             <label htmlFor="register-email" className="auth__input-label">E-mail</label>
             <input
                 type="email"
@@ -40,7 +40,7 @@ function SignForm(props) {
             />
             <span class="email-error auth__error-span"></span>
           </div>
-          <div className="input__wrapper">
+          <div className="auth__input-wrapper">
             <label htmlFor="register-password" className="auth__input-label">Пароль</label>
             <input
               type="password"

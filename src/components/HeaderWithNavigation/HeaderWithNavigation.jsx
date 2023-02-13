@@ -19,8 +19,8 @@ function HeaderWithNavigation(props) {
 
   const setActive = ({ isActive }) => (
     isActive
-    ? "navigation__link navigation__link_active"
-    : "navigation__link"
+    ? "header__navigation-link header__navigation-link_active"
+    : "header__navigation-link"
   );
 
   if (width > SCREEN_BREAKPOINT) {
@@ -34,11 +34,11 @@ function HeaderWithNavigation(props) {
             Сохранённые фильмы
           </NavLink>
         </nav>
-        <nav className="navigation__profile">
-          <Link to="/profile" className="navigation__profile-link">
+        <nav className="header__profile-link-wrapper">
+          <Link to="/profile" className="header__profile-link">
             Аккаунт
           </Link>
-          <Link to="/profile" className="navigation__profile-icon"/>
+          <Link to="/profile" className="header__profile-icon"/>
         </nav>
       </>
     )

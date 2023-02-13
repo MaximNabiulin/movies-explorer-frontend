@@ -3,10 +3,10 @@ import './MoviesDownload.css';
 
 function MoviesDownload() {
   return (
-    <sectoin className="sectoin__content sectoin__content_download">
-      <button className="movies__download-button">Еще</button>
+    <div className="sectoin movies-download">
+      <button className="movies-download__button">Еще</button>
 
-    </sectoin>
+    </div>
   )
 }
 

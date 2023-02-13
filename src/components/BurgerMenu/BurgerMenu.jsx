@@ -46,11 +46,11 @@ function BurgerMenu(props) {
             <NavLink to="/movies" className={setActive}>Фильмы</NavLink>
             <NavLink to="/saved-movies" className={setActive}>Сохранённые фильмы</NavLink>
         </nav>
-          <nav className="navigation__profile navigation__profile_burger">
-            <Link to="/profile" className="navigation__profile-link">
+          <nav className="header__profile-link-wrapper header__profile-link-wrapper_burger">
+            <Link to="/profile" className="header__profile-link">
               Аккаунт
             </Link>
-            <Link to="/profile" className="navigation__profile-icon"/>
+            <Link to="/profile" className="header__profile-icon"/>
           </nav>
       </div>
     </div>

@@ -6,7 +6,7 @@ import './Register.css';
 
 function Register() {
   return (
-    <div className="auth__page register">
+    <div className="auth-page register">
       <Header
         isLoggedIn ={false}
       />
@@ -19,7 +19,7 @@ function Register() {
         linkText="Войти"
         // onSubmit={handleSubmit}
       >
-        <div className="input__wrapper">
+        <div className="auth__input-wrapper">
           <label htmlFor="register-name" className="auth__input-label">Имя</label>
           <input
               type="text"

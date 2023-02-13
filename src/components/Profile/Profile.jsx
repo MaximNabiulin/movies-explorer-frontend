@@ -8,7 +8,7 @@ function Profile() {
   return (
     <>
     <Header isLoggedIn ={true} />
-    <div className="profile__page">
+    <div className="profile-page">
       <div className="profile">
         <h1 className="profile__title">Привет, Виталий!</h1>
         <form
@@ -18,7 +18,7 @@ function Profile() {
           className="profile__form"
         >
           <div className="profile__inputs">
-            <div className="profile__wrapper">
+            <div className="profile__input-wrapper">
               <label htmlFor="profile-name" className="profile__input-label">Имя</label>
               <input
                 type="text"
@@ -32,7 +32,7 @@ function Profile() {
               />
               <span class="name-error profile__error-span"></span>
             </div>
-            <div className="profile__wrapper">
+            <div className="profile__input-wrapper">
               <label htmlFor="profile-email" className="profile__input-label">E-mail</label>
               <input
                   type="email"
@@ -54,7 +54,7 @@ function Profile() {
           >
             Редактировать
           </button>
-          <Link to='/' className="logout__link">Выйти из аккаунта</Link>
+          <Link to='/' className="profile__logout-link">Выйти из аккаунта</Link>
         </form>
       </div>
     </div>

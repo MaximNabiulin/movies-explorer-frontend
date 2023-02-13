@@ -6,7 +6,7 @@ import './Signin.css';
 
 function Signin() {
   return (
-    <div className="auth__page signin">
+    <div className="auth-page signin">
       <Header isLoggedIn={false} />
       <SignForm
         name="signin"

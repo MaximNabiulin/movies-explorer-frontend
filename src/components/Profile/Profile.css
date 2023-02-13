@@ -1,4 +1,4 @@
-.profile__page {
+.profile-page {
   width: 100%;
   margin: 0 auto;
 }
@@ -32,7 +32,7 @@
   flex-direction: column;
 }
 
-.profile__wrapper {
+.profile__input-wrapper {
   margin: 0 0 17px;
   width: 100%;
   display: flex;
@@ -90,7 +90,7 @@
   opacity: 0.5;
 }
 
-.logout__link {
+.profile__logout-link {
   align-self: center;
   margin: 16px auto 0;
   font-weight: 500;
@@ -102,7 +102,7 @@
   transition: opacity 0.1s;
 }
 
-.logout__link:hover {
+.profile__logout-link:hover {
   opacity: 0.5;
 }
 
@@ -141,7 +141,7 @@
     line-height: 15px;
   }
 
-  .logout__link {
+  .profile__logout-link {
     font-size: 12px;
     line-height: 15px;
   }

@@ -40,16 +40,26 @@
 
 .portfolio__link {
   margin: 0;
+  width: 100%;
   font-weight: 400;
   font-size: 30px;
   line-height: 50px;
   letter-spacing: -0.04em;
   color: #000000;
   text-decoration: none;
+  position: relative;
+  transition: opacity 0.1s;
+}
+
+.portfolio__link:hover {
+  opacity: 0.5;
 }
 
 .portfolio__link-arrow {
-  margin: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* margin: 0 auto 0 0; */
   width: 29px;
   height: 60px;
 }
