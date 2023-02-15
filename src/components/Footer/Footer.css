@@ -1,0 +1,132 @@
+.footer {
+  margin: auto 0 0;
+  background-color: #FAFAFA;
+}
+
+.footer__content {
+  width: calc(100% - 2*30px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer__title {
+  width: 100%;
+  margin: 79px auto 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E8E8E8;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #A0A0A0;
+}
+
+.footer__info {
+  margin: 20px auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.footer__copyright {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+}
+
+.footer__navigation {
+  justify-self: end;
+}
+
+.footer__links {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+  justify-self: end;
+}
+
+.footer__link-wrapper {
+  padding-right: 20px;
+}
+
+.footer__link-wrapper:last-child {
+  padding-right: 0;
+}
+
+.footer__link {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: right;
+  color: #000000;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 500px) and (max-width: 1023px) {
+  .footer {
+    background-color: #FFFFFF;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .footer {
+    background-color: #FFFFFF;
+  }
+
+  .footer__content {
+    width: calc(100% - 2*10px);
+  }
+
+  .footer__title {
+    padding-bottom: 21px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__info {
+    margin: 30px auto 20px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "navigation"
+      "copyright";
+    gap: 30px;
+  }
+
+  .footer__copyright {
+    font-size: 12px;
+    line-height: 15px;
+    color: #A0A0A0;
+    grid-area: copyright;
+    justify-self: center;
+  }
+
+  .footer__navigation {
+    grid-area: navigation;
+    justify-self: center;
+  }
+
+  .footer__links {
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__link-wrapper {
+    padding: 0 0 12px;
+  }
+
+  .footer__link-wrapper:last-child {
+    padding: 0;
+  }
+
+  .footer__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+

@@ -1,0 +1,23 @@
+.movies-download {
+  margin: 50px auto 80px;
+}
+
+.movies-download__button {
+  padding: 0;
+  width: 320px;
+  height: 36px;
+  box-sizing: border-box;
+  border: 1.5px solid #E8E8E8;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+}
+
+@media screen and (max-width: 499px) {
+  .movies-download__button {
+    width: 240px;
+  }
+}
