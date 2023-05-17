@@ -12,8 +12,31 @@ function SignForm(props) {
     linkPath,
     linkText,
     children,
-    // onSubmit
+    formValues,
+    errors,
+    isValid,
+    onChange,
+    onSubmit,
+    isLoading,
+    submitError
   } = props;
+
+  const inputEmailClassName =
+    `${!errors.email
+      ? 'auth__input'
+      : 'auth__input auth__input_error'
+    }`;
+
+  const inputPasswordClassName =
+    `${!errors.password
+      ? 'auth__input'
+      : 'auth__input auth__input_error'
+    }`;
+
+  const isButtonDisabled = () => {
+    return isLoading ||
+    !isValid;
+  }
 
   return (
     <div className="auth">
@@ -21,7 +44,8 @@ function SignForm(props) {
       <form
         id={`${name}-form`}
         name={`${name}-form`}
-        // onSubmit={onSubmit}
+        onSubmit={onSubmit}
+        noValidate
         className="auth__form"
       >
         <div className="auth__inputs">
@@ -32,34 +56,37 @@ function SignForm(props) {
                 type="email"
                 id="register-email"
                 name="email"
-                // value={formValues.email}
-                // onChange={handleChange}
+                value={formValues.email}
+                onChange={onChange}
+                disabled={isLoading}
                 // placeholder="E-mail"
                 required
-                className="auth__input"
+                className={inputEmailClassName}
             />
-            <span class="email-error auth__error-span"></span>
+            <span className="email-error auth__error-span">{errors.email}</span>
           </div>
           <div className="auth__input-wrapper">
             <label htmlFor="register-password" className="auth__input-label">Пароль</label>
             <input
-              type="password"
               id="register-password"
+              type="password"
               name="password"
-              // value={formValues.password}
-              // onChange={handleChange}
+              value={formValues.password}
+              onChange={onChange}
+              disabled={isLoading}
               // placeholder="Пароль"
               required
-              className="auth__input"
+              className={inputPasswordClassName}
             />
-            <span class="password-error auth__error-span"></span>
+            <span className="password-error auth__error-span">{errors.password}</span>
           </div>
         </div>
+        <p className="auth__submit-error">{submitError}</p>
         <button
           id = "register-submit"
           type="submit"
+          disabled={isButtonDisabled()}
           className="auth__submit-button"
-
         >
           {buttonText}
         </button>

@@ -2,7 +2,26 @@ import React from 'react';
 import './MoviesCard.css';
 
 function MoviesCard(props) {
-  const { card } = props;
+  const { card, onLikeMovie, isSavedMovies } = props;
+
+  const getCardProperties = (card) => {
+    if(!isSavedMovies) {
+      return {
+        country: card.country,
+        director: card.director,
+        duration: card.duration ,
+        year: card.year,
+        description: card.description,
+        image: `https://api.nomoreparties.co/${card.image.url}`,
+        trailerLink: card.trailerLink,
+        thumbnail: `https://api.nomoreparties.co/${card.image.formats.thumbnail.url}`,
+        movieId: card.id,
+        nameRU: card.nameRU,
+        nameEN: card.nameEN,
+      };
+    }
+    return card;
+  }
 
   function getDurationInHours(duration) {
     if (duration > 60) {
@@ -14,12 +33,37 @@ function MoviesCard(props) {
     return `${duration}м`;
   }
 
+  const ImageLink = `${!isSavedMovies
+    ? `https://api.nomoreparties.co/${card.image.url}`
+    : `${card.image}`
+  }`;
+
+  function handleLikeClick() {
+    const movieCard = getCardProperties(card);
+    onLikeMovie(movieCard);
+  }
+
+  const likeButtonClassName = `${!card.isLiked
+    ? 'card__like-button'
+    : 'card__like-button card__like-button_active'
+  }`;
+
+  const deleteButtonClassName = 'card__delete-button'
+
+  const cardButtonClassName = `${!isSavedMovies
+    ? likeButtonClassName
+    : deleteButtonClassName
+  }`;
+
+
   return (
     <li className="card">
-      <img
-      src={card.image}
-      alt={card.nameRU}
-      className="card__image" />
+      <div className="card__image-frame">
+        <img
+        src={ImageLink}
+        alt={card.nameRU}
+        className="card__image" />
+      </div>
       <div className="card__caption">
         <div className="card__info">
           <h2 className="card__title">{card.nameRU}</h2>
@@ -27,8 +71,8 @@ function MoviesCard(props) {
         </div>
         <button
           type="button"
-          className="card__like-button"
-          // onClick={handleLikeClick}
+          className={cardButtonClassName}
+          onClick={handleLikeClick}
         >
         </button>
       </div>

@@ -1,20 +1,44 @@
 import React from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
+import { useForm } from '../../hooks/useForm';
+
 import './SearchForm.css';
 
 function SearchForm(props) {
-  const { name } = props;
+  const {
+    checked,
+    onChangeCheckbox,
+    currentSearchWord = '',
+    onSearchMovies
+  } = props;
+
+  const {formValues, handleChange, setFormValues} = useForm({ search: '' });
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onSearchMovies(formValues.search)
+  }
+
+  React.useEffect(() => {
+    setFormValues({ search: currentSearchWord });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
       <div className="section">
-        <form name={`${name}-form`} className="movies-form">
+        <form
+          name="search-form"
+          className="movies-form"
+          onSubmit={handleSubmit}
+        >
           <div className="movies-form__input-container">
             <input
               type="text"
               id="movies-search"
-              name="movies-search"
-              // value={formValues.name}
-              // onChange={handleChange}
+              name="search"
+              value={formValues.search}
+              onChange={handleChange}
               placeholder="Фильм"
               // minLength="2"
               // maxLength="40"
@@ -23,7 +47,7 @@ function SearchForm(props) {
             />
 
             <button
-              id = {`${name}-submit`}
+              id = "search-submit"
               type="submit"
               className="movies-form__submit-button"
               >
@@ -31,7 +55,7 @@ function SearchForm(props) {
             </button>
           </div>
 
-          <FilterCheckbox/>
+          <FilterCheckbox checked={checked} onChangeCheckbox={onChangeCheckbox} />
         </form>
       </div>
   );

@@ -10,13 +10,16 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 
-//подключаем стили
-// import './Main.css';
-
-function Main() {
+function Main(props) {
+  const { loggedIn, isOpen, onClose, onOpenMenu } = props;
   return (
     <>
-      <Header isLoggedIn ={true} />
+      <Header
+        isLoggedIn ={loggedIn}
+        isOpen={isOpen}
+        onClose={onClose}
+        onOpenMenu={onOpenMenu}
+      />
       <main className="content">
         <Promo/>
         <AboutProject/>

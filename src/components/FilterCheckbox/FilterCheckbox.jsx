@@ -2,11 +2,12 @@ import React from 'react';
 
 import './FilterCheckbox.css'
 
-function FilterCheckbox() {
+function FilterCheckbox(props) {
+  const { checked, onChangeCheckbox } = props;
   return (
     <div className="filter">
       <label className="filter__toggler-wrapper">
-        <input type="checkbox" className="filter__checkbox" />
+        <input type="checkbox" checked={checked} onChange={onChangeCheckbox} className="filter__checkbox" />
         <span className="filter__toggler-slider">
           <span className="filter__toggler-knob"></span>
         </span>
