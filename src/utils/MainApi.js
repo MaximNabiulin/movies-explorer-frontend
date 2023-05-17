@@ -1,7 +1,6 @@
-// import {baseUrl} from './auth.js';
-// import {searchMovies} from './utils';
+import { baseUrl } from './auth.js';
 
-const baseUrl = 'http://localhost:3001';
+// const baseUrl = 'http://localhost:3001';
 
 class MainApi {
   constructor(options, searchMovies) {

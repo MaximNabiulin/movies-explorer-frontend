@@ -1,7 +1,6 @@
 // url для локальной увязки
-const baseUrl = 'http://localhost:3001';
-
-// export const baseUrl = 'https://api.mesto.nabiulin.nomoredomains.icu';
+// const baseUrl = 'http://localhost:3001';
+export const baseUrl = 'https://api.movies.nabiulin.nomoredomains.club';
 
 const request = ({
   url,
