@@ -8,7 +8,7 @@
 
 Верстка проекта осуществлялась по макету в Figma: [https://disk.yandex.ru/d/cHSLPYvHgyThmg](https://disk.yandex.ru/d/cHSLPYvHgyThmg)
 
-Ссылка на репозиторий проекта: [https://github.com/MaximNabiulin/movies-explorer-frontend/tree/level-3](https://github.com/MaximNabiulin/movies-explorer-frontend/tree/level-3).
+Ссылка на репозиторий проекта: [https://github.com/MaximNabiulin/movies-explorer-frontend/tree/level-3](https://github.com/MaximNabiulin/movies-explorer-frontend/pull/9).
 
 * Публичный IP: 158.160.27.12
 * Бэкенд сайта: [api.movies.nabiulin.nomoredomains.club](api.movies.nabiulin.nomoredomains.club)
