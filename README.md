@@ -12,7 +12,7 @@
 
 * Публичный IP: 158.160.27.12
 * Бэкенд сайта: [api.movies.nabiulin.nomoredomains.club](api.movies.nabiulin.nomoredomains.club)
-* Фронтенд сайта: [https://movies.nabiulin.nomoredomains.club](https:/movies.nabiulin.nomoredomains.club).
+* Фронтенд сайта: [https://movies.nabiulin.nomoredomains.club](https://movies.nabiulin.nomoredomains.club).
 
 ### Использование
 ------
