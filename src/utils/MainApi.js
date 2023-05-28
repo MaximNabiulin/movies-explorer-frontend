@@ -1,12 +1,9 @@
 import { baseUrl } from './auth.js';
 
-// const baseUrl = 'http://localhost:3001';
-
 class MainApi {
-  constructor(options, searchMovies) {
+  constructor(options) {
     this._baseUrl = options.baseUrl;
     // this._headers = options.headers;
-    this._searchMovies = searchMovies;
   }
 
   _getResponseData(res) {
@@ -91,7 +88,6 @@ const mainApi = new MainApi({
   //   authorization: `Bearer ${localStorage.getItem('jwt')}`,
   // }
   },
-  // searchMovies
 );
 
 export default mainApi;

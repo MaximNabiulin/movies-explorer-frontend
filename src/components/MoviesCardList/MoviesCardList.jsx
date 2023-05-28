@@ -19,6 +19,7 @@ function MoviesCardList(props) {
     }
     return card._id
   }
+
   if (!cards) return;
   if(isLoading) {
     return (

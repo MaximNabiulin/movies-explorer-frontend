@@ -67,11 +67,15 @@ function App() {
     stateStorage.get('checkbox-state') ?? false
   );
   const [isDownloadButtonDisabled, setIsDownloadButtonDisabled] = React.useState(false);
+
+  // TODO: сделать попап с расширенной информацией о фильме при клике на карточку
   // const [selectedCard, setSelectedCard] = React.useState({});
 
   //страница /saved-movies
   const [savedCards, setSavedCards] = React.useState([]);
+  const [savedCardsToShow, setSavedCardsToShow] = React.useState([]);
   const [isSavedMovieShort, setIsSavedMovieShort] = React.useState(false);
+  const [currentSearchWordSaved, setCurrentSearchWordSaved] = React.useState('');
 
   // Стейт переменная для индикаторов загрузки запросов на сервер
   const [isLoading, setIsLoading] = React.useState(false);
@@ -174,7 +178,6 @@ function App() {
         setSearchErrorText(movies.items.length === 0 ? NOT_FOUND_SEARCH_ERROR : '');
         setIsDownloadButtonDisabled(!movies.meta.more);
         console.log('фильмы:', movies.items);
-        // setLikes();
       })
       .catch((err) => {
         setSearchErrorText(REQUEST_SEARCH_ERROR);
@@ -191,24 +194,14 @@ function App() {
 
   // Обработчик поиска фильмов на странице /saved-movies
   function handleSavedMoviesSearchSubmit(searchWord) {
-    const movies = searchMovies(savedCards, {
-      searchWord: searchWord,
-      isMovieShort: isSavedMovieShort
-    });
-    setSavedCards(movies);
+    setCurrentSearchWordSaved(searchWord);
   }
 
   // обработчик добавления отображаемых фильмов
   const handleShowMoreCards = () => {
     const rowSize = getCardsPerDownloadClick(width);
-    const setLimit = (width) => {
-      const restInLastRow = cards.length % rowSize;
-      if (width < SCREEN_BIG || restInLastRow === 0 ) {
-        return rowSize + restInLastRow;
-      };
-      return rowSize + restInLastRow - 1;
-    }
-    const limit = setLimit(width);
+    const restInLastRow = rowSize - (cards.length % rowSize);
+    const limit = rowSize === restInLastRow ? rowSize : rowSize + restInLastRow;
     moviesApi.getMovie({
       limit: limit,
       offset: cards.length
@@ -288,7 +281,7 @@ function App() {
         }
         handleCheckToken();
         navigate('/movies');
-        console.log('IsLoggedin?', isLoggedIn);
+        // console.log('IsLoggedin?', isLoggedIn);
       })
       .catch((err) => {
         console.log(err);
@@ -324,8 +317,11 @@ function App() {
       .then(() => {
         setIsLoggedIn(oldState => ({ ...oldState, loggedIn: false }));
         stateStorage.removeAll();
+        setIsSavedMovieShort(false);
+        setIsMovieShort(false);
         setCurrentUser(null);
         setCardsToShow(null);
+        setCards(null);
         setCurrentSearchWord('');
       })
       .catch((err) => {
@@ -340,6 +336,7 @@ function App() {
   }, []);
 
   const updateCardsToShow = React.useCallback(() => {
+    if (!cards) return;
     const likes = savedCards.map(item => item.movieId);
     const updatedCardsToShow = cards.map(card => {
       const item = {...card};
@@ -354,38 +351,42 @@ function App() {
   }, [updateCardsToShow]);
 
   React.useEffect(() => {
+    if (!isLoggedIn.loggedIn) return;
     stateStorage.set('checkbox-state', isMovieShort);
     stateStorage.set('search-word', currentSearchWord);
 
     fetchFilteredMovies();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMovieShort, currentSearchWord]);
+
+  React.useEffect(() => {
+    if (!isLoggedIn.loggedIn) return;
+    if (savedCards) {
+      const movies = searchMovies(savedCards, {
+        searchWord: currentSearchWordSaved,
+        isMovieShort: isSavedMovieShort
+      });
+      setSavedCardsToShow(movies);
+    }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSavedMovieShort, currentSearchWordSaved, savedCards]);
 
   React.useEffect(() => {
     if (!isLoggedIn.loggedIn) return;
     Promise.all([
       mainApi.getUserInfo(),
       mainApi.getUserCards(),
-      // moviesApi.getMovie({
-      //   limit: cardsToRender
-      // },
-      // {
-      //   searchWord: localStorage.getItem('search-word'),
-      //   isMovieShort: isMovieShort
-      // })
     ])
       .then(([userInfo, cards]) => {
         setCurrentUser(userInfo);
         setSavedCards(cards);
-        // setCards(movies.items);
-        // setIsDownloadButtonDisabled(!movies.meta.more);
-        // setLikes();
-        // console.log('сохраненные карточки inside:', savedCards);
       })
       .catch((err) => {
         console.log(err);
       });
     fetchFilteredMovies();
-    // console.log('IsLoggedin?:', isLoggedIn);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn.loggedIn]);
 
 
@@ -453,7 +454,8 @@ function App() {
                   onOpenMenu={handleBurgerMenuClick}
                   resultText={searchErrorText}
                   isLoading={isLoading}
-                  cards={savedCards}
+                  currentSearchWord={currentSearchWordSaved}
+                  cards={savedCardsToShow}
                   checked={isSavedMovieShort}
                   onChangeCheckbox={handleSavedMoviesCheckboxClick}
                   onSearchMovies={handleSavedMoviesSearchSubmit}

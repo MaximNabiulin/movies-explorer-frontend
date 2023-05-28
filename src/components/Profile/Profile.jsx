@@ -38,8 +38,6 @@ function Profile(props) {
     if (currentUser.name && currentUser.email) {
       setFormValues({ name: currentUser.name, email: currentUser.email });
       // resetForm({ name: currentUser.name, email: currentUser.email });
-      // setName(currentUser.name);
-      // setEmail(currentUser.email);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);

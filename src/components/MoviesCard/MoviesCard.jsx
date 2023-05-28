@@ -23,25 +23,10 @@ function MoviesCard(props) {
     return card;
   }
 
-  function getDurationInHours(duration) {
-    if (duration > 60) {
-      const hours = Math.trunc(duration/60);
-      const minutes = duration % 60;
-      return `${hours}ч ${minutes}м`;
-    }
-
-    return `${duration}м`;
-  }
-
   const ImageLink = `${!isSavedMovies
     ? `https://api.nomoreparties.co/${card.image.url}`
     : `${card.image}`
   }`;
-
-  function handleLikeClick() {
-    const movieCard = getCardProperties(card);
-    onLikeMovie(movieCard);
-  }
 
   const likeButtonClassName = `${!card.isLiked
     ? 'card__like-button'
@@ -56,13 +41,36 @@ function MoviesCard(props) {
   }`;
 
 
+  function getDurationInHours(duration) {
+    if (duration > 60) {
+      const hours = Math.trunc(duration/60);
+      const minutes = duration % 60;
+      return `${hours}ч ${minutes}м`;
+    }
+
+    return `${duration}м`;
+  }
+
+  function handleLikeClick() {
+    const movieCard = getCardProperties(card);
+    onLikeMovie(movieCard);
+  }
+
   return (
     <li className="card">
       <div className="card__image-frame">
-        <img
-        src={ImageLink}
-        alt={card.nameRU}
-        className="card__image" />
+        <a
+          href={card.trailerLink}
+          target='_blank'
+          rel='noreferrer'
+          className="card__trailer-link"
+        >
+          <img
+            src={ImageLink}
+            alt={card.nameRU}
+            className="card__image"
+          />
+        </a>
       </div>
       <div className="card__caption">
         <div className="card__info">
