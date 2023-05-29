@@ -299,7 +299,8 @@ function App() {
     setIsLoading(true);
     return auth.register(password, email, name)
       .then(() => {
-        navigate('/signin');
+        // navigate('/signin');
+        handleLogin(password, email);
       })
       .catch((err) => {
         console.log(err);
