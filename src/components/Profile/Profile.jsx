@@ -18,6 +18,7 @@ function Profile(props) {
     onEdit,
     isOnEdit,
     isLoading,
+    successMessage,
     onUpdateUser,
     onLogout,
     submitError,
@@ -92,7 +93,6 @@ function Profile(props) {
         formValues.email === currentUser.email);
     }
 
-
     function handleSubmit(evt) {
     evt.preventDefault();
     onUpdateUser(formValues);
@@ -147,6 +147,7 @@ function Profile(props) {
                 <span className="email-error profile__error-span">{errors.email}</span>
               </div>
             </div>
+            <p className="profile__success-message">{successMessage}</p>
             <p className={submitErrorClassName}>{submitError}</p>
             <button
               id = "profile-edit"

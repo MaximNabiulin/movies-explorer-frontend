@@ -12,6 +12,8 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 // ипортируем хуки
 import { useResize } from '../../hooks/useResize';
 
+
+
 // импортируем компоненты приложения
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -30,7 +32,10 @@ import {
   checkRegisterError,
   checkLoginError,
   checkUserUpdateError,
+  UPDATE_SUCCESS_MESSAGE,
 } from '../../utils/utils';
+
+
 
 // -- ПЕРЕМЕННЫЕ --
 // переменные для проверки ширины экрана
@@ -52,6 +57,7 @@ function App() {
   // Стэйт переменныя для данных пользователя
   const [currentUser, setCurrentUser] = React.useState({});
   const [userUpdateError, setUserUpdateError] = React.useState('');
+  const [updateSuccessMessage, setUpdateSuccessMessage] = React.useState('');
   const [isOnEdit, setIsOnEdit] = React.useState(false);
 
   // Стэйт переменные для блока с фильмами
@@ -133,13 +139,21 @@ function App() {
   // --- ОБРАБОТЧИКИ ЗАПРОСОВ ---
   // --ПРОФИЛЬ--
 
+  function showSuccessMessage() {
+    setUpdateSuccessMessage(UPDATE_SUCCESS_MESSAGE);
+    setTimeout(() => setUpdateSuccessMessage(''), 3000);
+  }
+
   // Обработчик обновления данных профиля
   function handleUpdateUser(currentUser) {
+    setUpdateSuccessMessage('');
     setUserUpdateError('');
     setIsLoading(true);
     mainApi.editUserInfo(currentUser)
       .then((userInfo) => {
         setCurrentUser(userInfo);
+        // setUpdateSuccessMessage(UPDATE_SUCCESS_MESSAGE);
+        showSuccessMessage();
         setIsOnEdit(oldState => !isOnEdit);
       })
       .catch((err) => {
@@ -154,6 +168,7 @@ function App() {
 
   // обработчик кнопки перехода в состояние редактирования профиля
   function handleEditButton() {
+    setUpdateSuccessMessage('');
     setIsOnEdit(true);
   }
 
@@ -475,6 +490,7 @@ function App() {
                   onEdit={handleEditButton}
                   isOnEdit={isOnEdit}
                   isLoading={isLoading}
+                  successMessage={updateSuccessMessage}
                   onUpdateUser={handleUpdateUser}
                   submitError={userUpdateError}
                   onLogout={handleLogout}

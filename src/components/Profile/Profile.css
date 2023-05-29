@@ -95,8 +95,20 @@
   border-bottom: 0;
 }
 
+.profile__success-message {
+  margin: 20px auto 0px;
+  width: 100%;
+  min-height: 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000000;
+}
+
 .profile__edit-button {
-  margin: 220px auto 0;
+  margin: 180px auto 0;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -118,7 +130,7 @@
 }
 
 .profile__submit-error {
-  margin: 186px auto 0;
+  margin: 146px auto 0;
   width: 100%;
   min-height: 14px;
   font-style: normal;
@@ -196,11 +208,11 @@
   }
 
   .profile__submit-error {
-    margin: 176px auto 0;
+    margin: 136px auto 0;
   }
 
   .profile__edit-button {
-    margin: 210px auto 0;
+    margin: 170px auto 0;
   }
 }
 
@@ -220,7 +232,7 @@
   }
 
   .profile__submit-error {
-    margin: 345px auto 0;
+    margin: 305px auto 0;
   }
 
   .profile__submit-button {
@@ -228,8 +240,13 @@
     line-height: 15px;
   }
 
+  .profile__success-message {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
   .profile__edit-button {
-    margin: 379px auto 0;
+    margin: 339px auto 0;
     font-size: 12px;
     line-height: 15px;
   }

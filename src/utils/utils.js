@@ -40,6 +40,8 @@ const RESPONSE_ERRORS = {
   // UPDATE_SUCCESSULLY: 'Сохранено!',
 };
 
+export const UPDATE_SUCCESS_MESSAGE = 'Данные пользователя обновлены!';
+
 export function checkRegisterError(err) {
   if (err === 409) return RESPONSE_ERRORS.SIGNUP_NOT_UNIQUE_EMAIL
   if (err === 500) return RESPONSE_ERRORS.SERVER_ERROR;
