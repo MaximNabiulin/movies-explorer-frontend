@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Routes,
   Route,
-  // Navigate,
+  Navigate,
   useNavigate,
 } from 'react-router-dom';
 
@@ -419,8 +419,9 @@ function App() {
       <div className="App">
         <div className="page">
           <Routes>
-            <Route path="/signup" element={
-              <>
+            <Route path="/signup" element={isLoggedIn.loggedIn
+              ? <Navigate to="/" />
+              : <>
                 <Register
                   onRegister={handleRegister}
                   isLoading={isLoading}
@@ -428,8 +429,9 @@ function App() {
                 />
               </>}
             />
-            <Route path="/signin" element={
-              <>
+            <Route path="/signin" element={isLoggedIn.loggedIn
+              ? <Navigate to="/" />
+              : <>
                 <Signin
                   onLogin={handleLogin}
                   isLoading={isLoading}
@@ -447,7 +449,7 @@ function App() {
             />
 
             <Route path="/movies" element={
-              <ProtectedRoute loggedIn={isLoggedIn.loggedIn} >
+              <ProtectedRoute>
                 <Movies
                   loggedIn={isLoggedIn.loggedIn}
                   isOpen={isBurgerMenuOpen}
@@ -468,7 +470,7 @@ function App() {
             />
 
             <Route path="/saved-movies" element={
-              <ProtectedRoute loggedIn={isLoggedIn.loggedIn}>
+              <ProtectedRoute>
                 <SavedMovies
                   loggedIn={isLoggedIn.loggedIn}
                   isOpen={isBurgerMenuOpen}
@@ -487,7 +489,7 @@ function App() {
             />
 
             <Route path="/profile" element={
-              <ProtectedRoute loggedIn={isLoggedIn.loggedIn}>
+              <ProtectedRoute>
                 <Profile
                   loggedIn={isLoggedIn.loggedIn}
                   isOpen={isBurgerMenuOpen}

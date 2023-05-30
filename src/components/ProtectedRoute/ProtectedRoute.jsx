@@ -3,9 +3,12 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import { CurrentUserContext } from '../../context/CurrentUserContext';
+
 const ProtectedRoute = (props) => {
-  const {loggedIn, children} = props;
-  return loggedIn ? children : <Navigate to="/movies" />
+  const { children } = props;
+  const currentUser = React.useContext(CurrentUserContext);
+  return currentUser ? children : <Navigate to="/" />
 };
 
 export default ProtectedRoute;
