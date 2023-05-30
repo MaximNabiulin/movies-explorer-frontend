@@ -108,7 +108,8 @@
 }
 
 .profile__edit-button {
-  margin: 180px auto 0;
+  /* margin: 180px auto 0; */
+  margin: 20px auto 0;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -211,9 +212,9 @@
     margin: 136px auto 0;
   }
 
-  .profile__edit-button {
+  /* .profile__edit-button {
     margin: 170px auto 0;
-  }
+  } */
 }
 
 @media screen and (max-width: 499px) {
@@ -246,7 +247,8 @@
   }
 
   .profile__edit-button {
-    margin: 339px auto 0;
+    /* margin: 339px auto 0; */
+    margin: 12px auto 0;
     font-size: 12px;
     line-height: 15px;
   }

@@ -144,6 +144,11 @@ function App() {
     setTimeout(() => setUpdateSuccessMessage(''), 3000);
   }
 
+  function showSubmitError(message) {
+    setUserUpdateError(message);
+    setTimeout(() => setUserUpdateError(''), 5000);
+  }
+
   // Обработчик обновления данных профиля
   function handleUpdateUser(currentUser) {
     setUpdateSuccessMessage('');
@@ -152,14 +157,15 @@ function App() {
     mainApi.editUserInfo(currentUser)
       .then((userInfo) => {
         setCurrentUser(userInfo);
-        // setUpdateSuccessMessage(UPDATE_SUCCESS_MESSAGE);
         showSuccessMessage();
         setIsOnEdit(oldState => !isOnEdit);
       })
       .catch((err) => {
         console.log(err);
         const message = checkUserUpdateError(err);
-        setUserUpdateError(message);
+        // setUserUpdateError(message);
+        showSubmitError(message);
+        setIsOnEdit(oldState => !isOnEdit); // в случае когда нужно выйти из режима редактирования при ошибке
       })
       .finally(() => {
         setIsLoading(false);

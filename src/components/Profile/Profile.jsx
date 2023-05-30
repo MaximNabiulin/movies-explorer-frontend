@@ -7,8 +7,6 @@ import Header from '../Header/Header';
 
 import './Profile.css';
 
-// import { checkUserUpdateError } from '../../utils/utils';
-
 function Profile(props) {
   const {
     loggedIn,
@@ -27,21 +25,21 @@ function Profile(props) {
   const {
     formValues,
     handleChange,
-    setFormValues,
+    // setFormValues,
     errors,
     isValid,
-    // resetForm,
+    resetForm,
   } = useForm({ name: '',  email: ''});
 
   const currentUser = React.useContext(CurrentUserContext);
 
   React.useEffect(() => {
     if (currentUser.name && currentUser.email) {
-      setFormValues({ name: currentUser.name, email: currentUser.email });
-      // resetForm({ name: currentUser.name, email: currentUser.email });
+      // setFormValues({ name: currentUser.name, email: currentUser.email });
+      resetForm({ name: currentUser.name, email: currentUser.email });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+  }, [currentUser, isOnEdit]);
 
   const greetingText =`Привет, ${currentUser.name}!`;
 
@@ -64,11 +62,12 @@ function Profile(props) {
       : 'profile__submit-button_hidden'
     }`;
 
-    const submitErrorClassName =
-    `${isOnEdit
-      ? 'profile__submit-error'
-      : 'profile__submit-error_hidden'
-    }`;
+    //Если нужно оставаться в режиме редактирования при ошибке
+    // const submitErrorClassName =
+    // `${isOnEdit
+    //   ? 'profile__submit-error'
+    //   : 'profile__submit-error_hidden'
+    // }`;
 
     const inputNameClassName =
       `${!errors.name
@@ -148,7 +147,8 @@ function Profile(props) {
               </div>
             </div>
             <p className="profile__success-message">{successMessage}</p>
-            <p className={submitErrorClassName}>{submitError}</p>
+            {/* <p className={submitErrorClassName}>{submitError}</p> */}
+            <p className="profile__submit-error">{submitError}</p>
             <button
               id = "profile-edit"
               type="button"
