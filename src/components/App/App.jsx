@@ -12,8 +12,6 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 // ипортируем хуки
 import { useResize } from '../../hooks/useResize';
 
-
-
 // импортируем компоненты приложения
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -28,27 +26,17 @@ import moviesApi from '../../utils/MoviesApi';
 import * as auth from '../../utils/auth';
 import stateStorage from '../../utils/StateStorage';
 import {
+  SCREEN_BIG,
+  SCREEN_MEDIUM,
+  CARDS_AMOUNT,
   searchMovies,
+  NOT_FOUND_SEARCH_ERROR,
+  REQUEST_SEARCH_ERROR,
   checkRegisterError,
   checkLoginError,
   checkUserUpdateError,
   UPDATE_SUCCESS_MESSAGE,
 } from '../../utils/utils';
-
-
-
-// -- ПЕРЕМЕННЫЕ --
-// переменные для проверки ширины экрана
-const SCREEN_BIG = 1105;
-const SCREEN_MEDIUM = 607;
-// const SCREEN_SMALL = 768;
-
-// переменные для сообщениях об ошибках
-const NOT_FOUND_SEARCH_ERROR = 'Ничего не найдено';
-const REQUEST_SEARCH_ERROR =
-  `Во время запроса произошла ошибка.
-  Возможно, проблема с соединением или сервер недоступен.
-  Подождите немного и попробуйте ещё раз`;
 
 function App() {
   // Стейт переменная открытия бургер-меню
@@ -98,27 +86,26 @@ function App() {
   // функция определения КОЛИЧЕСТВА стартовых карточек для отображения
   const getAmountOfInitialCards = (width) => {
     if (width < SCREEN_BIG && width >= SCREEN_MEDIUM) {
-      return 8;
+      return CARDS_AMOUNT.MEDIUM.INITIAL;
     }
     if (width < SCREEN_MEDIUM) {
-      return 5;
+      return CARDS_AMOUNT.SMALL.INITIAL;
     }
-    return 12;
+    return CARDS_AMOUNT.BIG.INITIAL;
   };
 
   // функция определения КОЛИЧЕСТВА подгружаемых карточек
   const getCardsPerDownloadClick = (width) => {
     if (width < SCREEN_BIG) {
-      return 2;
+      return CARDS_AMOUNT.MEDIUM.ROW_SIZE;
     }
-    return 3;
+    return CARDS_AMOUNT.BIG.ROW_SIZE;
   }
 
   // --- ОБРАБОТЧИКИ КНОПОК ОТКРЫТИЯ И ЗАКРЫТИЯ БУРГЕР-МЕНЮ
   // Обработчик открытия бургер-меню
   function handleBurgerMenuClick () {
     setIsBurgerMenuOpen(true);
-    console.log(isBurgerMenuOpen, 'Click!');
   };
 
   // Обработчик закрытия бургер-меню
@@ -198,7 +185,6 @@ function App() {
         setCards(movies.items);
         setSearchErrorText(movies.items.length === 0 ? NOT_FOUND_SEARCH_ERROR : '');
         setIsDownloadButtonDisabled(!movies.meta.more);
-        console.log('фильмы:', movies.items);
       })
       .catch((err) => {
         setSearchErrorText(REQUEST_SEARCH_ERROR);
