@@ -19,7 +19,7 @@ function Signin(props) {
     // setFormValues,
     errors,
     isValid,
-    resetForm,
+    // resetForm,
   } = useForm(initValues);
 
   const handleSubmit = (evt) => {
@@ -27,14 +27,7 @@ function Signin(props) {
     const {password, email} = formValues;
     if (!password || !email) return;
 
-    onLogin(password, email)
-      .then(() => {
-        // setFormValues(initValues);
-        resetForm(initValues);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    onLogin(password, email);
   }
 
   return (

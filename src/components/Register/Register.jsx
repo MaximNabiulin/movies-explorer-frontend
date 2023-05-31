@@ -20,7 +20,7 @@ function Register(props) {
     // setFormValues,
     errors,
     isValid,
-    resetForm,
+    // resetForm,
   } = useForm(initValues);
 
   const inputClassName =
@@ -33,14 +33,7 @@ function Register(props) {
     evt.preventDefault();
     const {password, email, name} = formValues;
 
-    onRegister(password, email, name)
-      .then(() => {
-        // setFormValues(initValues);
-        resetForm(initValues);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    onRegister(password, email, name);
   }
 
   return (
