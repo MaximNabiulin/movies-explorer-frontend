@@ -325,6 +325,7 @@ function App() {
       .then(() => {
         setIsLoggedIn(oldState => ({ ...oldState, loggedIn: false }));
         stateStorage.removeAll();
+        localStorage.removeItem('movies');
         setIsSavedMovieShort(false);
         setIsMovieShort(false);
         setCurrentUser(null);
