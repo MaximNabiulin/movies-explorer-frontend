@@ -1,4 +1,5 @@
 // -- ПЕРЕМЕННЫЕ --
+
 // переменные для проверки ширины экрана
 export const SCREEN_BIG = 1105;
 export const SCREEN_MEDIUM = 607;
