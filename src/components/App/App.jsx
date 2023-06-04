@@ -268,8 +268,8 @@ function App() {
   function handleCheckToken() {
     return auth.checkToken()
       .then(() => {
+        navigate('/movies');
         setIsLoggedIn(oldState => ({ ...oldState, loggedIn: true }));
-        // navigate('/movies');
       })
       .catch((err) => {
         console.log(err);
@@ -287,7 +287,7 @@ function App() {
           return Promise.reject(`Ошибка: ${data.status}`);
         }
         handleCheckToken();
-        navigate('/movies');
+        // navigate('/movies');
         // console.log('IsLoggedin?', isLoggedIn);
       })
       .catch((err) => {
