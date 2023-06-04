@@ -1,25 +1,68 @@
 import React from 'react';
-// import { Outlet } from 'react-router-dom';
 import logo from '../../images/logo.svg';
-import { Link, Outlet } from 'react-router-dom';
+import {
+  Link,
+  useLocation
+  // Outlet
+} from 'react-router-dom';
+
+import HeaderAuthLinks from '../HeaderAuthLinks/HeaderAuthLinks';
+import HeaderWithNavigation from '../HeaderWithNavigation/HeaderWithNavigation';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 import './Header.css';
 
 function Header(props) {
-  const { isLoggedIn } = props;
+  const { isLoggedIn, isOpen, onClose, onOpenMenu } = props;
 
-  return (
-    <header className={`header ${isLoggedIn ? "header_logged-in" : ""}`}>
-      <Link to="/" className="header__home-link">
-        <img
-          src={logo}
-          alt="Логотип"
-          className={`header__logo ${isLoggedIn ? "header__logo_logged-in" : ""}`}
+  const location = useLocation();
+
+  if (location.pathname === '/signup' || location.pathname === '/signin') {
+    return (
+      <header className="header">
+        <Link to="/" className="header__home-link">
+          <img
+            src={logo}
+            alt="Логотип"
+            className="header__logo"
+          />
+        </Link>
+      </header>
+    )
+  } else {
+    return isLoggedIn
+      ? (
+      <header className="header header_main-pages">
+        <Link to="/" className="header__home-link">
+          <img
+            src={logo}
+            alt="Логотип"
+            className="header__logo header__logo_main-pages"
+          />
+        </Link>
+        <HeaderWithNavigation
+          onOpenMenu={onOpenMenu}
+          onClose={onClose}
         />
-      </Link>
-      <Outlet />
-    </header>
-  )
+        <BurgerMenu
+          isOpen={isOpen}
+          onClose={onClose}
+        />
+      </header>
+    )
+    : (
+      <header className="header header_main-pages">
+        <Link to="/" className="header__home-link">
+          <img
+            src={logo}
+            alt="Логотип"
+            className="header__logo header__logo_main-pages"
+          />
+        </Link>
+        <HeaderAuthLinks />
+      </header>
+    )
+  }
 }
 
 export default Header;

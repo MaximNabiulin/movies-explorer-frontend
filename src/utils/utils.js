@@ -1,100 +1,107 @@
-import picWords from '../images/temprorary/33_word.png';
-import picYearsOfDesign from '../images/temprorary/100_year.png';
-import picBanksy from '../images/temprorary/banksy.png';
-import picBaskia from '../images/temprorary/Baskia.png';
-import picFreedom from '../images/temprorary/runing_freedom.png';
-import picBookSellers from '../images/temprorary/booksellers.png';
-import picGermany from '../images/temprorary/thinking_germany.png';
-import picDanger from '../images/temprorary/Gimme_danger.png';
-import picJanice from '../images/temprorary/Janice.png';
-import picJump from '../images/temprorary/before_jump.png';
-import picPJHarvey from '../images/temprorary/PJ_Harvey.png';
-import picOnVawes from '../images/temprorary/on_vawes.png';
+// -- ПЕРЕМЕННЫЕ --
 
-export const fakeCards = [
-  {
-    id:1,
-    nameRU:"33 слова о дизайне",
-    duration:107,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picWords,
+// переменные для проверки ширины экрана
+export const SCREEN_BIG = 1105;
+export const SCREEN_MEDIUM = 607;
+export const SCREEN_SMALL = 768;
+
+//-Фильмы-
+//длительность короткометражек
+export const SHORT_MOVIES_MAX_DURATION = 40;
+
+//число карточек для рендинга
+export const CARDS_AMOUNT = {
+  BIG: {
+    INITIAL: 12,
+    ROW_SIZE: 3
   },
-  {
-    id:2,
-    nameRU:"Киноальманах «100 лет дизайна»",
-    duration:63,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picYearsOfDesign,
+  MEDIUM: {
+    INITIAL: 8,
+    ROW_SIZE: 2
   },
-  {
-    id:3,
-    nameRU:"В погоне за Бенкси",
-    duration:102,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picBanksy,
-  },
-  {
-    id:4,
-    nameRU:"Баския: Взрыв реальности",
-    duration:81,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picBaskia,
-  },
-  {
-    id:5,
-    nameRU:"Бег это свобода",
-    duration:104,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picFreedom,
-  },
-  {
-    id:6,
-    nameRU:"Книготорговцы",
-    duration:97,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picBookSellers,
-  },
-  {
-    id:7,
-    nameRU:"Когда я думаю о Германии ночью",
-    duration:116,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picGermany,
-  },
-  {
-    id:8,
-    nameRU:"Gimme Danger: История Игги и The Stooge...",
-    duration:119,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picDanger,
-  },
-  {
-    id:9,
-    nameRU:"Дженис: Маленькая девочка грустит",
-    duration:102,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picJanice,
-  },
-  {
-    id:10,
-    nameRU:"Соберись перед прыжком",
-    duration:70,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picJump,
-  },
-  {
-    id:11,
-    nameRU:"Пи Джей Харви: A dog called money",
-    duration:64,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picPJHarvey,
-  },
-  {
-    id:12,
-    nameRU:"По волнам: Искусство звука в кино",
-    duration:67,
-    trailerLink:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    image: picOnVawes,
-  },
-  ];
+  SMALL: {
+    INITIAL: 5,
+    ROW_SIZE: 2
+  }
+};
+
+// переменные для сообщений об ошибках при поиске
+export const NOT_FOUND_SEARCH_ERROR = 'Ничего не найдено';
+export const REQUEST_SEARCH_ERROR =
+  `Во время запроса произошла ошибка.
+  Возможно, проблема с соединением или сервер недоступен.
+  Подождите немного и попробуйте ещё раз`;
+
+
+// Переменная для собщений об ошибках с сервера
+const RESPONSE_ERRORS = {
+  // Ошибка сервера
+  SERVER_ERROR: 'На сервере произошла ошибка', //500
+  // Ошибки регистрации
+  SIGNUP_NOT_UNIQUE_EMAIL: 'Пользователь с таким Email уже существует.', //409
+  SIGNUP_DEFAULT: 'При регистрации пользователя произошла ошибка.',
+  // Ошибки логина
+  SIGNIN_VALIDATION: 'Вы ввели неправильный логин или пароль.', //401
+  SIGNIN_DEFAULT: 'При входе произошла ошибка.',
+  // Ошибки обновления данных пользователя
+  UPDATE__NOT_UNIQUE_EMAIL: 'Пользователь с таким Email уже существует.', //409
+  UPDATE_DEFAULT: 'При обновлении  произошла ошибка.',
+  // UPDATE_SUCCESSULLY: 'Сохранено!',
+};
+
+// сообщение об успешном обновлении данных пользователя
+export const UPDATE_SUCCESS_MESSAGE = 'Данные пользователя обновлены!';
+
+//--ФУНКЦИИ--
+// проверка типа ошибки при регистрации
+export function checkRegisterError(err) {
+  if (err === 409) return RESPONSE_ERRORS.SIGNUP_NOT_UNIQUE_EMAIL
+  if (err === 500) return RESPONSE_ERRORS.SERVER_ERROR;
+  return RESPONSE_ERRORS.SIGNUP_DEFAULT;
+}
+
+// проверка типа ошибки при логине
+export function checkLoginError(err) {
+  if (err === 401) return RESPONSE_ERRORS.SIGNIN_VALIDATION
+  if (err === 500) return RESPONSE_ERRORS.SERVER_ERROR;
+  return RESPONSE_ERRORS.SIGNIN_DEFAULT;
+}
+
+// проверка типа ошибки при обновлении данных пользователя
+export function checkUserUpdateError(err) {
+  if (err === 'Ошибка: 409') return RESPONSE_ERRORS.UPDATE__NOT_UNIQUE_EMAIL
+  if (err === 'Ошибка: 500') return RESPONSE_ERRORS.SERVER_ERROR;
+  return RESPONSE_ERRORS.UPDATE_DEFAULT;
+}
+
+// Функция поиска фильмов
+export function searchMovies(movies, filters) {
+  const { searchWord, isMovieShort } = filters;
+  // let filteredMovies = movies;
+  // Поиск по ключам
+  // if(keys) {
+  //   return filteredMovies = movies.filter(movie => keys.includes(movie.key));
+  // };
+
+  // Поиск по ключевому слову
+  const word = searchWord.toLowerCase();
+  const filteredMovies = movies.filter((movie) => {
+    if (movie.nameRU?.toLowerCase().includes(word)) {
+      return true;
+    }
+    if (movie.nameEN?.toLowerCase().includes(word)) {
+      return true;
+    }
+  });
+  // проверка на включенный фильтр короткометражек
+  if(isMovieShort) {
+    return filteredMovies.filter((movie) => {
+      return movie.duration < SHORT_MOVIES_MAX_DURATION;
+    })
+  }
+  return filteredMovies;
+};
+
+
+
 

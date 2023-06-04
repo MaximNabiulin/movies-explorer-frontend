@@ -7,17 +7,48 @@ import SearchForm from '../SearchForm/SearchForm';
 import Footer from '../Footer/Footer';
 
 function Movies(props) {
-  const { cards } = props;
+  const {
+    loggedIn,
+    isOpen,
+    onClose,
+    onOpenMenu,
+    resultText,
+    cards,
+    currentSearchWord,
+    onDisableDownloadButton,
+    isLoading,
+    checked,
+    onChangeCheckbox,
+    onSearchMovies,
+    onDownloadMore,
+    onLikeMovie
+  } = props;
 
   return (
     <>
-      <Header isLoggedIn={true} />
+      <Header
+        isLoggedIn={loggedIn}
+        isOpen={isOpen}
+        onClose={onClose}
+        onOpenMenu={onOpenMenu}
+      />
       <main className="content">
-        <SearchForm/>
-        <MoviesCardList
-        cards={cards}
+        <SearchForm
+          checked={checked}
+          currentSearchWord={currentSearchWord}
+          onChangeCheckbox={onChangeCheckbox}
+          onSearchMovies={onSearchMovies}
         />
-        <MoviesDownload/>
+        <MoviesCardList
+          resultText={resultText}
+          cards={cards}
+          isLoading={isLoading}
+          onLikeMovie={onLikeMovie}
+        />
+        <MoviesDownload
+          onDownloadMore={onDownloadMore}
+          onDisable={onDisableDownloadButton}
+        />
       </main>
       <Footer/>
     </>

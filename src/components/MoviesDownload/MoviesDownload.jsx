@@ -1,10 +1,22 @@
 import React from 'react';
 import './MoviesDownload.css';
 
-function MoviesDownload() {
+function MoviesDownload(props) {
+  const { onDownloadMore, onDisable } = props;
+
+  const downloadButtonClassName =
+    `${!onDisable
+      ? 'movies-download__button'
+      : 'movies-download__button_disabled'}`;
+
   return (
     <div className="sectoin movies-download">
-      <button className="movies-download__button">Еще</button>
+      <button
+        onClick={onDownloadMore}
+        className={downloadButtonClassName}
+      >
+        Еще
+      </button>
 
     </div>
   )

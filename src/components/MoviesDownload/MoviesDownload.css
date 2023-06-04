@@ -16,6 +16,10 @@
   color: #000000;
 }
 
+.movies-download__button_disabled {
+  display: none;
+}
+
 @media screen and (max-width: 499px) {
   .movies-download__button {
     width: 240px;

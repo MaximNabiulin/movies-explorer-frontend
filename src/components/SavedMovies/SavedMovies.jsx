@@ -6,15 +6,42 @@ import SearchForm from '../SearchForm/SearchForm';
 import Footer from '../Footer/Footer';
 
 function SavedMovies(props) {
-  const { cards } = props;
+  const {
+    loggedIn,
+    isOpen,
+    onClose,
+    onOpenMenu,
+    checked,
+    onChangeCheckbox,
+    currentSearchWord,
+    onSearchMovies,
+    resultText,
+    cards,
+    isLoading,
+    onLikeMovie
+  } = props;
 
   return (
     <>
-      <Header isLoggedIn={true} />
+      <Header
+        isLoggedIn={loggedIn}
+        isOpen={isOpen}
+        onClose={onClose}
+        onOpenMenu={onOpenMenu}
+      />
       <main className="content">
-        <SearchForm/>
+        <SearchForm
+          checked={checked}
+          onChangeCheckbox={onChangeCheckbox}
+          currentSearchWord={currentSearchWord}
+          onSearchMovies={onSearchMovies}
+        />
         <MoviesCardList
-        cards={cards}
+          resultText={resultText}
+          cards={cards}
+          isSavedMovies={true}
+          isLoading={isLoading}
+          onLikeMovie={onLikeMovie}
         />
       </main>
       <Footer/>
